@@ -9,8 +9,8 @@ generator client {
 
 model User {
   id               Int             @id @default(autoincrement())
-  email            String          @unique
-  phone            String          @unique
+  email            String
+  phone            String
   name             String
   educationLevelId Int
   educationLevel   EducationLevel  @relation(fields: [educationLevelId], references: [id])

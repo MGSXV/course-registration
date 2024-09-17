@@ -10,7 +10,7 @@ Small script for course registration
 - In the `.env` file, set the DATABASE_URL to your MySQL connection string:
 ```
 DATABASE_HOST={ database host }
-DATABASE_PORT={ database port }
+DATABASE_PORT={ database port }lic
 DATABASE_USER={ database  }
 DATABASE_PASSWORD=password
 DATABASE_NAME=courses_registration

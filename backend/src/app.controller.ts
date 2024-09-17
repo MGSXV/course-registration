@@ -11,7 +11,7 @@ export class AppController {
 		try {
 			return this.appService.register(registrationDTO);
 		} catch (error) {
-			console.log(error);
+			return error.messgae;
 		}
 	}
 }	
