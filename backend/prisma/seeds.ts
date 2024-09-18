@@ -9,26 +9,33 @@ const education_level = async () => {
 			{ name: "Bac +2" },
 			{ name: "Bac +3" },
 			{ name: "Bac +5" },
-			{ name: "Bac +7" },
 			{ name: "Autre" }
 		]
 	})
 }
 
+const empty_education_level = async () => {
+	await prisma.educationLevel.deleteMany({})
+}
+
+const empty_formation = async () => {
+	await prisma.formation.deleteMany({})
+}
+
 const formation = async () => {
 	await prisma.formation.createMany({
 		data: [
-			{ name: "Informatique" },
-			{ name: "Marketing" },
-			{ name: "Comptabilité" },
-			{ name: "Ressources humaines" },
-			{ name: "Autre" }
+			{ name: "GRH" },
+			{ name: "GCF" },
+			{ name: "GCM" },
 		]
 	})
 }
 
 (async () => {
 	await prisma.$connect();
+	await empty_education_level();
+	await empty_formation();
 	await education_level();
 	await formation();
 	await prisma.$disconnect();

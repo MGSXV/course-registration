@@ -7,11 +7,20 @@ export class AppController {
 	constructor(private readonly appService: AppService) {}
 
 	@Post('register')
-	register(@Body() registrationDTO: RegistrationDto) {
+	async register(@Body() registrationDTO: RegistrationDto) {
 		try {
-			return this.appService.register(registrationDTO);
+			return await this.appService.register(registrationDTO);
 		} catch (error) {
 			return error.messgae;
+		}
+	}
+
+	@Get('registration-info')
+	async getAllRegistrationInfo() {
+		try {
+			return await this.appService.getAllRegistrationInfo();
+		} catch (error) {
+			return error.message;
 		}
 	}
 }	

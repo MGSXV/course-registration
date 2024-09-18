@@ -7,11 +7,21 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum ECourseHours {
+  JOURNEE
+  SOIR
+  WEEKEND
+}
+
 model User {
   id               Int             @id @default(autoincrement())
+  sureName         String
+  lastName         String
+  age              Int
   email            String
   phone            String
-  name             String
+  profession       String?
+  courseHours      ECourseHours
   educationLevelId Int
   educationLevel   EducationLevel  @relation(fields: [educationLevelId], references: [id])
   formations       Formation[]     @relation("UserFormations")
