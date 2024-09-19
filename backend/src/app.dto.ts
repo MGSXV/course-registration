@@ -30,7 +30,7 @@ export class RegistrationDto {
 	phone: string;
 
 	@IsString({ message: 'La profession doit être une chaîne de caractères' })
-	@IsNotEmpty({ message: 'La profession est obligatoire' })
+	// @IsNotEmpty({ message: 'La profession est obligatoire' })
 	@MinLength(0)
 	@MaxLength(100, { message: 'La profession doit contenir au plus 100 caractères' })
 	profession?: string;
