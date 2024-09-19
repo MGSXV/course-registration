@@ -41,7 +41,7 @@ export class RegistrationDto {
 	@IsNumber({ allowNaN: false, allowInfinity: false }, { message: 'L\'âge doit être un nombre' })
 	@IsNotEmpty({ message: 'L\'âge est obligatoire' })
 	@Min(16, { message: 'L\'âge doit être supérieur ou égal à 16' })
-	@Max(100, { message: 'L\'âge doit être inférieur ou égal à 100' })
+	// @Max(100, { message: 'L\'âge doit être inférieur ou égal à 100' })
 	age: number;
 
 	@IsNumber({ allowNaN: false, allowInfinity: false }, { message: 'Niveau d\'éducation non valide' })
