@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AppService } from './app.service';
 import { RegistrationDto } from './app.dto';
 
@@ -7,6 +7,7 @@ export class AppController {
 	constructor(private readonly appService: AppService) {}
 
 	@Post('register')
+	@UsePipes(new ValidationPipe({ transform: true }))
 	async register(@Body() registrationDTO: RegistrationDto) {
 		try {
 			return await this.appService.register(registrationDTO);

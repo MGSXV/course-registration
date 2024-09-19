@@ -1,6 +1,7 @@
 import { IsEmail, IsNotEmpty, IsNumber, IsPhoneNumber, IsString, MaxLength, Min, MinLength } from "@nestjs/class-validator";
 import { ECourseHours } from "./types/request-types";
 import { IsEnum, Max } from "class-validator";
+import { Type } from "class-transformer";
 
 export class RegistrationDto {
 	@IsString({ message: 'Le prénom doit être une chaîne de caractères' })
@@ -38,17 +39,20 @@ export class RegistrationDto {
 	@IsEnum(ECourseHours, { message: 'Les heures de cours doivent être une des valeurs suivantes: Journée, Soir, Weekend' })
 	courseHours: ECourseHours;
 
-	@IsNumber({ allowNaN: false, allowInfinity: false }, { message: 'L\'âge doit être un nombre' })
+	@Type(() => Number)
+	@IsNumber()
 	@IsNotEmpty({ message: 'L\'âge est obligatoire' })
-	// @Min(16, { message: 'L\'âge doit être supérieur ou égal à 16' })
-	// @Max(100, { message: 'L\'âge doit être inférieur ou égal à 100' })
+	@Min(16, { message: 'L\'âge doit être supérieur ou égal à 16' })
+	@Max(100, { message: 'L\'âge doit être inférieur ou égal à 100' })
 	age: number;
 
+	@Type(() => Number)
 	@IsNumber({ allowNaN: false, allowInfinity: false }, { message: 'Niveau d\'éducation non valide' })
 	@IsNotEmpty({ message: 'Le niveau d\'éducation est obligatoire' })
 	@Min(1,  { message: 'Niveau d\'éducation non valide' })
 	education_level_id: number;
 
+	@Type(() => Number)
 	@IsNumber({ allowNaN: false, allowInfinity: false }, { message: 'Formation non valide' })
 	@IsNotEmpty({ message: 'La formation est obligatoire' })
 	@Min(1, { message: 'Formation non valide' })
